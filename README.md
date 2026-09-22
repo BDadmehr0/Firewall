@@ -1,8 +1,6 @@
 # Firewall
 
 ``` text
-
-
    UP Network Dev
          |          
      Attachment -> Monitor -> Firewall Alghorithm -> Log
