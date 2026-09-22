@@ -1,14 +1,31 @@
 # Firewall
+بسته‌ها را قبل از رسیدن به سرویس بررسی می‌کند و طبق Ruleها اجازه می‌دهد، محدود می‌کند یا Drop می‌کند.
 
 ``` text
    UP Network Dev
-         |          
-     Attachment -> Monitor -> Firewall Alghorithm -> Log
-                      |             |
-                      |             --------------> Return Checking
+         |
+     Attachment -> Monitor -> Firewall Alghorithm -> Log <-----|
+                      |             |                 _______ Drop 
+                      |             ------Rule-----> |_______ Accept -> Forward
               All Network Protocol
 
 ```
+
+## Rule
+
+- Add rate limiting for excessive incoming traffic.
+- Limit new TCP connections per source IP.
+- Drop invalid and malformed packets.
+- Add basic SYN flood protection.
+- Rate-limit ICMP/ping requests.
+- Block unnecessary ports and allow only required services.
+- Add temporary blocking for IPs that exceed defined limits.
+- Keep established and related connections allowed.
+
+## Log
+
+- Test the rules to avoid blocking legitimate users.
+- Log suspicious or dropped traffic without flooding the logs.
 
 ## Used Packages
 
